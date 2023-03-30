@@ -1,7 +1,7 @@
 #import <AppKit/AppKit.h>
 
 // darling shell
-// clang -lobjc -framework Foundation -framework AppKit HelloAppKit.m -o HelloAppKit
+// clang -lobjc -framework Foundation -framework AppKit -o HelloAppKit.app/HelloAppKit HelloAppKit.m
 // ./HelloAppKit
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
@@ -15,7 +15,7 @@
 
     NSRect windowRect = NSMakeRect(0, 0, 200, 100);
     window = [[NSWindow alloc] initWithContentRect:windowRect
-                                         styleMask:NSWindowStyleMaskTitled
+                                         styleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable) 
                                            backing:NSBackingStoreBuffered
                                              defer:NO];
     [window center];
@@ -31,10 +31,12 @@
     [label setAlignment:NSTextAlignmentCenter];
 
     [window.contentView addSubview:label];
+
+    [NSApp activateIgnoringOtherApps:YES];
     [window makeKeyAndOrderFront:nil];
 }
 
-- (BOOL)applicatonShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
 @end
