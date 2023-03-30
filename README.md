@@ -6,7 +6,7 @@ Install Darling HQ as usual: [Build Instructions](https://docs.darlinghq.org/bui
 
 Install Command-line developer tools: [Installing Software](https://docs.darlinghq.org/installing-software.html)
 
-Then, compile and run the examples, for example AppKit:
+Then, compile and run:
 
 ```
 darling shell
