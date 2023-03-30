@@ -10,6 +10,6 @@ Then, compile and run the examples, for example AppKit:
 
 ```
 darling shell
-clang -lobjc -framework Foundation -framework AppKit HelloAppKit.m -o HelloAppKit
-./HelloAppKit
+clang -lobjc -framework Foundation -framework AppKit -o HelloAppKit.app/HelloAppKit HelloAppKit.m
+./HelloAppKit.app/HelloAppKit
 ```

@@ -2,7 +2,7 @@
 
 // darling shell
 // clang -lobjc -framework Foundation -framework AppKit -o HelloAppKit.app/HelloAppKit HelloAppKit.m
-// ./HelloAppKit
+// ./HelloAppKit.app/HelloAppKit
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
