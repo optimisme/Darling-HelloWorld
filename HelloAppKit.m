@@ -44,17 +44,25 @@
 
 - (void)addMenu {
 
+/*
+  Menu structure:
+
+  (menu) mainMenu
+         (menu item) mainMenuItem
+                     (menu) appMenu
+                            (menu item) appMenuItemQuit
+*/
+
     NSString *appName = [[NSProcessInfo processInfo] processName];
     NSMenu *mainMenu = [[NSMenu alloc] initWithTitle:@"MainMenu"];
     NSMenuItem *mainMenuItem = [[NSMenuItem alloc] initWithTitle:appName action:nil keyEquivalent:@""];
     NSMenu *appMenu = [[NSMenu alloc] initWithTitle:@"Application"];
     NSMenuItem *appMenuItemQuit = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"];
 
-    [appMenu addItem:appMenuItemQuit];
+    [NSApp setMainMenu:mainMenu];
     [mainMenu addItem:mainMenuItem];
     [mainMenuItem setSubmenu:appMenu];
-
-    [NSApp setMainMenu:mainMenu];
+    [appMenu addItem:appMenuItemQuit];
 }
 
 @end
