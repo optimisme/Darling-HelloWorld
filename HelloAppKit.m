@@ -32,6 +32,8 @@
 
     [window.contentView addSubview:label];
 
+    [self addMenu];
+
     [NSApp activateIgnoringOtherApps:YES];
     [window makeKeyAndOrderFront:nil];
 }
@@ -39,6 +41,21 @@
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
+
+- (void)addMenu {
+
+    NSMenu *mainMenu = [[NSMenu alloc] initWithTitle:@"MainMenu"];
+    NSMenuItem *mainMenuItem = [[NSMenuItem alloc] initWithTitle:@"Application" action:nil keyEquivalent:@""];
+    NSMenu *appMenu = [[NSMenu alloc] initWithTitle:@"Application"];
+    NSMenuItem *appMenuItemQuit = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"];
+
+    [appMenu addItem:appMenuItemQuit];
+    [mainMenu addItem:mainMenuItem];
+    [mainMenuItem setSubmenu:appMenu];
+
+    [NSApp setMainMenu:mainMenu];
+}
+
 @end
 
 
@@ -48,18 +65,6 @@ int main(int argc, const char *argv[]) {
       NSApplication *app = [NSApplication sharedApplication];
       AppDelegate *appDelegate = [[AppDelegate alloc] init];
       [app setDelegate:appDelegate];
-
-      NSMenu *mainMenu = [[NSMenu alloc] initWithTitle:@"MainMenu"];
-      NSMenuItem *appMenuItem = [[NSMenuItem alloc] initWithTitle:@"App" action:nil keyEquivalent:@""];
-
-      NSMenu *appMenu = [[NSMenu alloc] initWithTitle:@"App"];
-      NSMenuItem *quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"];
-      [appMenu addItem:quitMenuItem];
-
-      [mainMenu addItem:appMenuItem];
-      [appMenuItem setSubmenu:appMenu];
-      [app setMainMenu:mainMenu];
-
       [app run];
     }
     return 0;
