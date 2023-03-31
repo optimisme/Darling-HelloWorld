@@ -1,6 +1,6 @@
 # Darling-HelloWorld
 
-Hello World, a windowed AppKit application that works on Darling HQ.
+An example of a windowed AppKit application that works on Darling HQ
 
 Install Darling HQ as usual: [Build Instructions](https://docs.darlinghq.org/build-instructions.html)
 
